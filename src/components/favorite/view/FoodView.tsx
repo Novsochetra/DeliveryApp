@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react'
 import { FlatList, StyleSheet, View, Dimensions } from 'react-native'
 import { Card } from '../../common/Card'
-import { IProduct, favoriteDummies } from '../../../dummies/favorite.dummies'
+import { IProduct, favoriteFoodDummies } from '../../../dummies/favorite.dummies'
 import { StyleGuide } from '../../../utils/StyleGuide'
 
-export const PlacesView = (): ReactElement => {
+export const FoodView = (): ReactElement => {
   const renderItem = ({ item: product }: { item: IProduct; index: number }): ReactElement => {
     return (
       <Card
@@ -22,7 +22,7 @@ export const PlacesView = (): ReactElement => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={favoriteDummies}
+        data={favoriteFoodDummies}
         renderItem={renderItem}
         keyExtractor={(item: IProduct) => item.id.toString()}
         showsVerticalScrollIndicator={false}

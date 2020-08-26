@@ -4,7 +4,7 @@ import { Navigation, Options, LayoutComponent } from 'react-native-navigation'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 import { store } from './state/Store'
-import HomeScreen from './components/home/HomeScreen'
+import { FavoriteScreen } from './components/favorite/FavoriteScreen'
 import { StyleGuide } from './utils/StyleGuide'
 
 export enum IScreenNames {
@@ -36,10 +36,10 @@ function component(Component: any, _withErrorHandler = true): any {
 
 export function registerScreens(): void {
   // https://docs.swmansion.com/react-native-gesture-handler/docs/getting-started.html
-  Navigation.registerComponent('Explore', component(gestureHandlerRootHOC(HomeScreen)))
-  Navigation.registerComponent('MyOrder', component(gestureHandlerRootHOC(HomeScreen)))
-  Navigation.registerComponent('Favorite', component(gestureHandlerRootHOC(HomeScreen)))
-  Navigation.registerComponent('Profile', component(gestureHandlerRootHOC(HomeScreen)))
+  Navigation.registerComponent('Explore', component(gestureHandlerRootHOC(FavoriteScreen)))
+  Navigation.registerComponent('MyOrder', component(gestureHandlerRootHOC(FavoriteScreen)))
+  Navigation.registerComponent('Favorite', component(gestureHandlerRootHOC(FavoriteScreen)))
+  Navigation.registerComponent('Profile', component(gestureHandlerRootHOC(FavoriteScreen)))
 }
 
 const DefaultNavigationOptions: Options = {

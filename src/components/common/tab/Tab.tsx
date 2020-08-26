@@ -31,7 +31,7 @@ export const Tab = React.memo(
         keyExtractor={(_item: any, index: number) => index.toString()}
         contentContainerStyle={styles.contentContainerStyle}
         showsHorizontalScrollIndicator={false}
-        // scrollEnabled={false}
+        scrollEnabled={false}
         removeClippedSubviews
         nestedScrollEnabled
         pagingEnabled
