@@ -11,7 +11,7 @@ type CardProps = {
   rating: number
   totalRate: number
   isFreeDelivery: boolean
-  onItemPress: () => void
+  onItemPress?: () => void
 }
 
 // eslint-disable-next-line react/display-name
@@ -26,7 +26,7 @@ export const Card = React.memo(
     onItemPress,
   }: CardProps): ReactElement => {
     return (
-      <TouchableOpacity style={styles.cardContainer} onPress={onItemPress}>
+      <TouchableOpacity style={styles.cardContainer} onPress={() => onItemPress?.()}>
         <View style={styles.leftWrapper}>
           <Image source={{ uri: productImageURL }} style={styles.productImage} />
         </View>

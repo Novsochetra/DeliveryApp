@@ -1,29 +1,35 @@
 import React, { ReactElement } from 'react'
-import { FlatList, View, StyleSheet, Text } from 'react-native'
-import { IProduct } from '../../dummies/favorite.dummies'
-import { StyleGuide } from '../../utils/StyleGuide'
+import { View, StyleSheet, SafeAreaView, Platform, StatusBar, Dimensions } from 'react-native'
+import { Tab, ITabData } from '../common/tab/Tab'
+import { Header } from './view/Header'
 
 type HomeViewProps = {
-  favorites: IProduct[]
-  renderItem: ({ item, index }: { item: IProduct; index: number }) => ReactElement
+  tabs: ITabData
+  activeTabIndex: number
+  setActiveTabIndex: (i: number) => void
+  renderTabItem: ({ item, index }: { item: any; index: number }) => ReactElement
 }
 
-export const HomeView = ({ favorites, renderItem }: HomeViewProps): ReactElement => {
+export const HomeView = ({
+  tabs,
+  activeTabIndex,
+  renderTabItem,
+  setActiveTabIndex,
+}: HomeViewProps): ReactElement => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={favorites}
-        renderItem={renderItem}
-        keyExtractor={(item: IProduct) => item.id.toString()}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={{ flex: 1 }}>
+        <Header setActiveTabIndex={setActiveTabIndex} />
+        <Tab initialIndex={activeTabIndex} data={tabs} renderTabItem={renderTabItem} />
+      </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: StyleGuide.paddingMd,
+    width: Dimensions.get('window').width,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
 })

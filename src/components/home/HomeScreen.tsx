@@ -1,39 +1,52 @@
-import React, { ReactElement, useState, useCallback } from 'react'
+import React, { ReactElement, useState } from 'react'
+import {} from 'react-native'
 import { Layout } from '../common/Layout'
-import { favoriteDummies, IProduct } from '../../dummies/favorite.dummies'
-import { Card } from '../common/Card'
+import { ITabData } from '../common/tab/Tab'
 import { HomeView } from './HomeView'
+import { PlacesView } from './view/PlacesView'
+import { FoodView } from './view/FoodView'
 
 type HomeScreenProps = {
   screenName: string
 }
 
+const TAB_DATA: ITabData = [
+  {
+    id: 'Place',
+    onPress: () => {
+      console.log('Go To Place Screen')
+    },
+    component: () => <PlacesView />,
+  },
+  {
+    id: 'Food',
+    onPress: () => {
+      console.log('Go To Food Screen')
+    },
+    component: () => <FoodView />,
+  },
+]
+
 const HomeScreen = (_: HomeScreenProps): ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [loading, _setLoading] = useState(false)
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
 
-  const onItemPress = useCallback(() => {
-    console.log('ITEM Press')
-  }, [])
-
-  const renderItem = ({ item: product }: { item: IProduct; index: number }): ReactElement => {
-    return (
-      <Card
-        key={`favoriteCard${product.id}`}
-        productName={product.productName}
-        productImageURL={product.productImage}
-        location={product.location}
-        rating={product.rating}
-        totalRate={product.totalRate}
-        isFreeDelivery={product.isFreeDelivery}
-        onItemPress={onItemPress}
-      />
-    )
+  const renderTabItem = ({
+    item: { component: TabItemComponent },
+  }: {
+    item: any
+    index: number
+  }): ReactElement => {
+    return <TabItemComponent />
   }
 
   return (
-    <Layout loading={loading}>
-      <HomeView favorites={favoriteDummies} renderItem={renderItem} />
+    <Layout loading={false}>
+      <HomeView
+        renderTabItem={renderTabItem}
+        activeTabIndex={activeTabIndex}
+        setActiveTabIndex={setActiveTabIndex}
+        tabs={TAB_DATA}
+      />
     </Layout>
   )
 }

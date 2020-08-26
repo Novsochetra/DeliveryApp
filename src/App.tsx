@@ -99,7 +99,6 @@ const FavoriteComponent: LayoutComponent = {
   options: {
     bottomTab: { text: 'Favorite', icon: require('./assets/icons/radio.png') },
   },
-  passProps: { screenName: 'LatestNewsScreen.tsx' },
 }
 
 const ProfileComponent: LayoutComponent = {
@@ -107,7 +106,6 @@ const ProfileComponent: LayoutComponent = {
   options: {
     bottomTab: { text: 'Profile', icon: require('./assets/icons/radio.png') },
   },
-  passProps: { screenName: 'LatestNewsScreen.tsx' },
 }
 
 export function startApp(): void {

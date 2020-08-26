@@ -2,16 +2,10 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.json',
+    sourceType: 'module',
+    project: 'tsconfig.json',
   },
-  plugins: [
-    '@typescript-eslint',
-    'prettier',
-    'import',
-    'react',
-    'react-native',
-    'react-hooks',
-  ],
+  plugins: ['@typescript-eslint', 'prettier', 'import', 'react', 'react-native', 'react-hooks'],
   extends: [
     '@react-native-community',
     'eslint:recommended',
@@ -23,13 +17,16 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/react',
+    'prettier/@typescript-eslint',
     'prettier/standard',
   ],
   rules: {
     '@typescript-eslint/no-unused-vars': [
-      2,
+      'error',
       {
+        varsIgnorePattern: '^_',
         argsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
       },
     ],
     '@typescript-eslint/explicit-function-return-type': [
@@ -55,6 +52,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 0,
     'react/no-unescaped-entities': 0,
     'react-native/no-unused-styles': 2,
+    'react/display-name': [0, { ignoreTranspilerName: false }],
     'no-console': 0,
   },
   settings: {
@@ -68,4 +66,4 @@ module.exports = {
     fetch: false,
     FormData: false,
   },
-};
+}
