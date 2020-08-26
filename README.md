@@ -1,4 +1,4 @@
-# React Native Boilaplate
+# DeliveryApp
 Boilapage for React Native that follow structure [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
 ### Dependicies
@@ -40,4 +40,4 @@ Lint Checking:
 ```sh
 $ yarn lint
 ```
-# DeliveryApp
+
